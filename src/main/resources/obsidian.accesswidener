@@ -1,0 +1,5 @@
+accessWidener	v2	named
+accessible field net/minecraft/world/gen/chunk/ChunkGenerator biomeSource Lnet/minecraft/world/biome/source/BiomeSource;
+accessible class net/minecraft/world/gen/WorldPresets$Registrar
+accessible class net/minecraft/world/biome/source/MultiNoiseBiomeSourceParameterList
+accessible class net/minecraft/world/biome/source/MultiNoiseBiomeSourceParameterList$Preset$BiomeSourceFunction

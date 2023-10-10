@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.obsidian.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ChunkNoiseSamplerMixin",
+    "MultiNoiseBiomeSourceParameterListsMixin",
+    "MultiNoiseSamplerMixin",
+    "NoiseConfigMixin",
+    "TheEndBiomeSourceMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
