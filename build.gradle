@@ -3,8 +3,11 @@ plugins {
 	id 'maven-publish'
 }
 
+apply plugin: 'maven-publish'
+
 version = project.mod_version
-group = project.maven_group
+group = 'com.github.ItsRemurin'
+
 
 base {
 	archivesName = project.archives_base_name
@@ -14,13 +17,6 @@ loom {
 	accessWidenerPath = file("src/main/resources/obsidian.accesswidener")
 }
 
-repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
-}
 
 loom {
     splitEnvironmentSourceSets()
@@ -88,6 +84,9 @@ jar {
 		rename { "${it}_${project.base.archivesName.get()}"}
 	}
 }
+
+
+
 
 // configure the maven publication
 publishing {
