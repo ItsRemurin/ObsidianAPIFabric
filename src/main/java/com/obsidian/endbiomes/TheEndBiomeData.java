@@ -8,6 +8,7 @@ import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -18,13 +19,14 @@ public class TheEndBiomeData {
     private static final BiMap<RegistryKey<Biome>, RegistryEntry<Biome>> keyToEntry = HashBiMap.create();
     public static final WeightedNoiseSelection<RegistryKey<Biome>> weightedNoiseSelection = new WeightedNoiseSelection<RegistryKey<Biome>>();
 
+    public static final ThreadLocal<RegistryEntryLookup<Biome>> biomeRegistry = new ThreadLocal<>();
     /**
      * Adds a land biome to The End with a default weight of 1.
      *
      * @param biomeRegistryKey The key of the biome to add.
      */
-    public static void AddLandBiome(RegistryKey<Biome> biomeRegistryKey) {
-        AddLandBiome(biomeRegistryKey, 1);
+    public static void addLandBiome(RegistryKey<Biome> biomeRegistryKey) {
+        addLandBiome(biomeRegistryKey, 1);
     }
 
     /**
@@ -33,8 +35,8 @@ public class TheEndBiomeData {
      * @param biomeRegistryKey The key of the biome to add.
      * @param weight           The weight of the biome.
      */
-    public static void AddLandBiome(RegistryKey<Biome> biomeRegistryKey, double weight) {
-        AddBiome(biomeRegistryKey, EndBiomeType.LAND, weight);
+    public static void addLandBiome(RegistryKey<Biome> biomeRegistryKey, double weight) {
+        addBiome(biomeRegistryKey, EndBiomeType.LAND, weight);
     }
 
     /**
@@ -43,8 +45,8 @@ public class TheEndBiomeData {
      * @param biomeRegistryKey The key of the biome to add.
      * @param biomeType        The type of the biome.
      */
-    public static void AddBiome(RegistryKey<Biome> biomeRegistryKey, EndBiomeType biomeType) {
-        AddBiome(biomeRegistryKey, biomeType, 1);
+    public static void addBiome(RegistryKey<Biome> biomeRegistryKey, EndBiomeType biomeType) {
+        addBiome(biomeRegistryKey, biomeType, 1);
     }
 
     /**
@@ -54,7 +56,7 @@ public class TheEndBiomeData {
      * @param biomeType        The type of the biome.
      * @param weight           The weight of the biome.
      */
-    public static void AddBiome(RegistryKey<Biome> biomeRegistryKey, EndBiomeType biomeType, double weight) {
+    public static void addBiome(RegistryKey<Biome> biomeRegistryKey, EndBiomeType biomeType, double weight) {
         biomeKeys.add(biomeRegistryKey);
         weightedNoiseSelection.add(biomeRegistryKey, weight);
     }
