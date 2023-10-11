@@ -14,6 +14,7 @@ public class ObsidianMod implements ModInitializer {
 		TheEndBiomeData.addLandBiome(BiomeKeys.END_HIGHLANDS);
 		TheEndBiomeData.addLandBiome(BiomeKeys.END_MIDLANDS);
 		TheEndBiomeData.addLandBiome(BiomeKeys.END_BARRENS);
+		TheEndBiomeData.addLandBiome(BiomeKeys.ICE_SPIKES);
 
 		TheEndBiomeData.addVoidBiome(BiomeKeys.SMALL_END_ISLANDS);
 	}

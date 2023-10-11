@@ -32,13 +32,18 @@ public class WeightedNoiseSelection<T> {
         perlinNoiseSampler = null;
         return true;
     }
-
+    public double maxNum;
+    public double minNum;
+    public double average;
+    public double count;
     public T pickFromNoise(MultiNoiseUtil.MultiNoiseSampler sampler, double x, double y, double z) {
         if(perlinNoiseSampler == null) {
             perlinNoiseSampler = new PerlinNoiseSampler(new ChunkRandom(new CheckedRandom(((ImplMultiNoiseSampler)(Object)sampler).getSeed())));
+            ObsidianMod.LOGGER.info("Created perlinNoiseSampler for WeightedNoiseSelection");
         }
 
-        double target = Math.abs(perlinNoiseSampler.sample(x, y, z)) * totalWeight;
+
+        double target = (Math.abs(perlinNoiseSampler.sample(x / 16, y / 16, z / 16)) * 3) * totalWeight;
 
         double currentWeight = 0;
 
