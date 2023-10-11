@@ -50,10 +50,10 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource implements Impl
     public void getBiome(int x, int y, int z, MultiNoiseUtil.MultiNoiseSampler noise, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
         RegistryEntry<Biome> returnValue = cir.getReturnValue();
         if(returnValue == midlandsBiome || returnValue == highlandsBiome || returnValue == barrensBiome) {
-            RegistryKey<Biome> replacementValue = TheEndBiomeData.landNoiseSelection.pickFromNoise(noise, x, y, z);
+            RegistryKey<Biome> replacementValue = TheEndBiomeData.landNoiseSelection.pickFromNoise(noise, (double) x / 64, 0, (double) z / 64);
             cir.setReturnValue(replacementValue != null ? TheEndBiomeData.getBiomeEntry(replacementValue) : returnValue);
         } else if(returnValue == smallIslandsBiome) {
-            RegistryKey<Biome> replacementValue = TheEndBiomeData.voidNoiseSelection.pickFromNoise(noise, x, y, z);
+            RegistryKey<Biome> replacementValue = TheEndBiomeData.voidNoiseSelection.pickFromNoise(noise, (double) x / 64, 0, (double) z / 64);
             cir.setReturnValue(replacementValue != null ? TheEndBiomeData.getBiomeEntry(replacementValue) : returnValue);
         }
     }

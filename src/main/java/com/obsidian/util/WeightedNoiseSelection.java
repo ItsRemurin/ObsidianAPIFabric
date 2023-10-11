@@ -2,6 +2,8 @@ package com.obsidian.util;
 
 import com.obsidian.ImplMultiNoiseSampler;
 import com.obsidian.ObsidianMod;
+import net.fabricmc.fabric.impl.biome.WeightedPicker;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.util.math.random.CheckedRandom;
 import net.minecraft.util.math.random.ChunkRandom;
@@ -42,8 +44,7 @@ public class WeightedNoiseSelection<T> {
             ObsidianMod.LOGGER.info("Created perlinNoiseSampler for WeightedNoiseSelection");
         }
 
-
-        double target = (Math.abs(perlinNoiseSampler.sample(x / 16, y / 16, z / 16)) * 3) * totalWeight;
+        double target = MathHelper.clamp(Math.abs(perlinNoiseSampler.sample(x, y, z)), 0, 1) * totalWeight;
 
         double currentWeight = 0;
 
