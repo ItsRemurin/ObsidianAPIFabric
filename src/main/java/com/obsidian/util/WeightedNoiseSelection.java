@@ -2,7 +2,6 @@ package com.obsidian.util;
 
 import com.obsidian.ImplMultiNoiseSampler;
 import com.obsidian.ObsidianMod;
-import net.fabricmc.fabric.impl.biome.WeightedPicker;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.util.math.random.CheckedRandom;
@@ -26,18 +25,10 @@ public class WeightedNoiseSelection<T> {
         totalWeight += weight;
     }
 
-    public boolean resetPerlinNoiseSampler() {
-        if(perlinNoiseSampler == null) {
-            return false;
-        }
-
+    public void resetPerlinNoiseSampler() {
         perlinNoiseSampler = null;
-        return true;
     }
-    public double maxNum;
-    public double minNum;
-    public double average;
-    public double count;
+
     public T pickFromNoise(MultiNoiseUtil.MultiNoiseSampler sampler, double x, double y, double z) {
         if(perlinNoiseSampler == null) {
             perlinNoiseSampler = new PerlinNoiseSampler(new ChunkRandom(new CheckedRandom(((ImplMultiNoiseSampler)(Object)sampler).getSeed())));
