@@ -40,28 +40,14 @@ public class WeightedNoiseSelection<T> {
         double currentWeight = 0;
 
         for(WeightedEntry<T> entry : entries) {
-            currentWeight += entry.getWeight();
+            currentWeight += entry.weight();
             if(currentWeight >= target) {
-                return entry.getValue();
+                return entry.value();
             }
         }
 
         return null;
     }
 
-    public class WeightedEntry<T> {
-        private double weight;
-        private T value;
-
-        public WeightedEntry(T value, double weight) {
-            this.value = value;
-            this.weight = weight;
-        }
-        public T getValue() {
-            return value;
-        }
-        public double getWeight() {
-            return weight;
-        }
-    }
+    public record WeightedEntry<T>(T value, double weight) { }
 }
