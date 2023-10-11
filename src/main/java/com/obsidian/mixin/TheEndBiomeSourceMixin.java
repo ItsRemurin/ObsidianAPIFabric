@@ -34,7 +34,8 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource implements Impl
     @Inject(method = "createVanilla", at = @At("TAIL"))
     private static void createVanilla(RegistryEntryLookup<Biome> biomeLookup, CallbackInfoReturnable<TheEndBiomeSource> cir) {
         TheEndBiomeData.mapEntriesToKeys(biomeLookup);
-        TheEndBiomeData.weightedNoiseSelection.resetPerlinNoiseSampler();
+        TheEndBiomeData.landNoiseSelection.resetPerlinNoiseSampler();
+        TheEndBiomeData.voidNoiseSelection.resetPerlinNoiseSampler();
     }
 
 
@@ -49,10 +50,10 @@ public abstract class TheEndBiomeSourceMixin extends BiomeSource implements Impl
     public void getBiome(int x, int y, int z, MultiNoiseUtil.MultiNoiseSampler noise, CallbackInfoReturnable<RegistryEntry<Biome>> cir) {
         RegistryEntry<Biome> returnValue = cir.getReturnValue();
         if(returnValue == midlandsBiome || returnValue == highlandsBiome || returnValue == barrensBiome) {
-            RegistryKey<Biome> replacementValue = TheEndBiomeData.weightedNoiseSelection.pickFromNoise(noise, x, y, z);
-            if(replacementValue == null) {
-                ObsidianMod.LOGGER.info("RegistryKey is Null");
-            }
+            RegistryKey<Biome> replacementValue = TheEndBiomeData.landNoiseSelection.pickFromNoise(noise, x, y, z);
+            cir.setReturnValue(replacementValue != null ? TheEndBiomeData.getBiomeEntry(replacementValue) : returnValue);
+        } else if(returnValue == smallIslandsBiome) {
+            RegistryKey<Biome> replacementValue = TheEndBiomeData.voidNoiseSelection.pickFromNoise(noise, x, y, z);
             cir.setReturnValue(replacementValue != null ? TheEndBiomeData.getBiomeEntry(replacementValue) : returnValue);
         }
     }

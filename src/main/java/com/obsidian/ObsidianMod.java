@@ -15,8 +15,6 @@ public class ObsidianMod implements ModInitializer {
 		TheEndBiomeData.addLandBiome(BiomeKeys.END_MIDLANDS);
 		TheEndBiomeData.addLandBiome(BiomeKeys.END_BARRENS);
 
-		//DimensionOptions.END.getValue().
-
-		//MaterialRuleData.AddEndBiomeMaterialRule(BiomeKeys.END_MIDLANDS, MaterialRules.condition(MaterialRules.biome(BiomeKeys.THE_END), MaterialRules.block(Blocks.GRASS_BLOCK.getDefaultState())));
+		TheEndBiomeData.addVoidBiome(BiomeKeys.SMALL_END_ISLANDS);
 	}
 }
