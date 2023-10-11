@@ -1,7 +1,6 @@
 package com.obsidian.mixin;
 
 import com.obsidian.ImplMultiNoiseSampler;
-import net.fabricmc.fabric.impl.biome.MultiNoiseSamplerHooks;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.gen.densityfunction.DensityFunctionTypes;
