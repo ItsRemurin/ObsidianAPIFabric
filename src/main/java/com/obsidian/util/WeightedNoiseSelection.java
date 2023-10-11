@@ -38,7 +38,6 @@ public class WeightedNoiseSelection<T> {
         double target = MathHelper.clamp(Math.abs(perlinNoiseSampler.sample(x, y, z)), 0, 1) * totalWeight;
 
         double currentWeight = 0;
-
         for(WeightedEntry<T> entry : entries) {
             currentWeight += entry.weight();
             if(currentWeight >= target) {

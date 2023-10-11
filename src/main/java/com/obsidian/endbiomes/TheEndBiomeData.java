@@ -115,13 +115,9 @@ public class TheEndBiomeData {
 
     public static void mapEntriesToKeys(RegistryEntryLookup<Biome> registryEntryLookup) {
         keyToEntry.clear();
-        ObsidianMod.LOGGER.info("Begun mapping End Biome entries keys");
-
         for(RegistryKey<Biome> biomeRegistryKey : biomeKeys) {
             keyToEntry.put(biomeRegistryKey, registryEntryLookup.getOrThrow(biomeRegistryKey));
         }
-
-        ObsidianMod.LOGGER.info("Mapping complete with " + keyToEntry.size() + " entries.");
     }
 
     public enum EndBiomeType {
