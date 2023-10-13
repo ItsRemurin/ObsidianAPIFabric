@@ -20,15 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Set;
 
-@Mixin(TheEndBiomeSource.class)
+@Mixin(value = TheEndBiomeSource.class, priority = 1)
 public abstract class TheEndBiomeSourceMixin extends BiomeSource implements ImplTheEndBiomeSource{
 
     @Shadow @Final private RegistryEntry<Biome> midlandsBiome;
     @Shadow @Final private RegistryEntry<Biome> highlandsBiome;
-
     @Shadow @Final private RegistryEntry<Biome> smallIslandsBiome;
     @Shadow @Final private RegistryEntry<Biome> centerBiome;
-
     @Shadow @Final private RegistryEntry<Biome> barrensBiome;
 
     @Inject(method = "createVanilla", at = @At("TAIL"))

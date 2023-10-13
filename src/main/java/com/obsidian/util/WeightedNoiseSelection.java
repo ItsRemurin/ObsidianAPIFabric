@@ -25,8 +25,25 @@ public class WeightedNoiseSelection<T> {
         totalWeight += weight;
     }
 
+    public void remove(T item) {
+        totalWeight = 0;
+        List<WeightedEntry<T>> newEntries = new ArrayList<>();
+        for (WeightedEntry<T> entry : entries) {
+            if (entry.value() != item) {
+                newEntries.add(entry);
+                totalWeight += entry.weight();
+            }
+        }
+        entries.clear();
+        entries.addAll(newEntries);
+    }
+
     public void resetPerlinNoiseSampler() {
         perlinNoiseSampler = null;
+    }
+
+    public void setPerlinNoiseSampler(PerlinNoiseSampler perlinNoiseSampler) {
+        this.perlinNoiseSampler = perlinNoiseSampler;
     }
 
     public T pickFromNoise(MultiNoiseUtil.MultiNoiseSampler sampler, double x, double y, double z) {

@@ -8,6 +8,7 @@ import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,6 +16,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TheEndBiomeData {
+    private static boolean hasInitialized;
+
     private static final Set<RegistryKey<Biome>> biomeKeys = new HashSet<>();
     private static final BiMap<RegistryKey<Biome>, RegistryEntry<Biome>> keyToEntry = HashBiMap.create();
     public static final WeightedNoiseSelection<RegistryKey<Biome>> landNoiseSelection = new WeightedNoiseSelection<RegistryKey<Biome>>();
@@ -84,6 +87,12 @@ public class TheEndBiomeData {
         }
     }
 
+    public static void removeBiome(RegistryKey<Biome> biomeRegistryKey) {
+        biomeKeys.remove(biomeRegistryKey);
+        landNoiseSelection.remove(biomeRegistryKey);
+        voidNoiseSelection.remove(biomeRegistryKey);
+    }
+
     /**
      * Gets the biome entry associated with a given biome key.
      *
@@ -118,6 +127,18 @@ public class TheEndBiomeData {
         for(RegistryKey<Biome> biomeRegistryKey : biomeKeys) {
             keyToEntry.put(biomeRegistryKey, registryEntryLookup.getOrThrow(biomeRegistryKey));
         }
+    }
+
+    public static void init() {
+        if(hasInitialized) {
+            return;
+        }
+
+        TheEndBiomeData.addLandBiome(BiomeKeys.END_HIGHLANDS);
+        TheEndBiomeData.addLandBiome(BiomeKeys.END_MIDLANDS);
+        TheEndBiomeData.addLandBiome(BiomeKeys.END_BARRENS);
+        TheEndBiomeData.addVoidBiome(BiomeKeys.SMALL_END_ISLANDS);
+        hasInitialized = true;
     }
 
     public enum EndBiomeType {
