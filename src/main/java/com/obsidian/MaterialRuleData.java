@@ -35,6 +35,11 @@ public class MaterialRuleData {
     public static void addNetherMaterialRule(MaterialRules.MaterialRule materialRule) {
         addMaterialRule(DimensionTypes.THE_NETHER, materialRule);
     }
+
+    /**
+     * @deprecated This may lead to unintended effects with mod dimensions due to the system's nature.
+     */
+    @Deprecated(forRemoval = true)
     public static void addOverworldMaterialRule(MaterialRules.MaterialRule materialRule) {
         addMaterialRule(DimensionTypes.OVERWORLD, materialRule);
     }
