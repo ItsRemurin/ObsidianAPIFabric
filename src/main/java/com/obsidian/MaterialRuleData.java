@@ -42,6 +42,8 @@ public class MaterialRuleData {
         if(!materialRulesMap.containsKey(dimensionType)) {
             materialRulesMap.put(dimensionType, new HashSet<>());
         }
-        materialRulesMap.get(dimensionType).add(materialRule);
+        Set<MaterialRules.MaterialRule> newRuleSet = materialRulesMap.get(dimensionType);
+        newRuleSet.add(materialRule);
+        materialRulesMap.forcePut(dimensionType, newRuleSet);
     }
 }

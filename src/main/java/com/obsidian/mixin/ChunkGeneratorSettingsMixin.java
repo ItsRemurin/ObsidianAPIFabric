@@ -2,6 +2,7 @@ package com.obsidian.mixin;
 
 import com.mojang.serialization.Codec;
 import com.obsidian.MaterialRuleData;
+import com.obsidian.ObsidianMod;
 import net.minecraft.world.dimension.DimensionTypes;
 import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
 import net.minecraft.world.gen.chunk.GenerationShapeConfig;
@@ -27,11 +28,11 @@ public class ChunkGeneratorSettingsMixin {
     public void surfaceRule(CallbackInfoReturnable<MaterialRules.MaterialRule> cir) {
         Set<MaterialRules.MaterialRule> newRuleSet = null;
 
-        if (generationShapeConfig == GenerationShapeConfig.END) {
+        if (generationShapeConfig.equals(GenerationShapeConfig.END)) {
             newRuleSet = MaterialRuleData.getDimensionMaterialRules(DimensionTypes.THE_END);
-        } else if (generationShapeConfig == GenerationShapeConfig.NETHER) {
+        } else if (generationShapeConfig.equals(GenerationShapeConfig.NETHER)) {
             newRuleSet = MaterialRuleData.getDimensionMaterialRules(DimensionTypes.THE_NETHER);
-        } else if (generationShapeConfig == GenerationShapeConfig.SURFACE) {
+        } else if (generationShapeConfig.equals(GenerationShapeConfig.SURFACE)) {
             newRuleSet = MaterialRuleData.getDimensionMaterialRules(DimensionTypes.OVERWORLD);
         }
 
