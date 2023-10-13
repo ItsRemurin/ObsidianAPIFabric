@@ -1,4 +1,8 @@
 accessWidener	v2	named
+accessible field net/minecraft/world/gen/chunk/GenerationShapeConfig SURFACE Lnet/minecraft/world/gen/chunk/GenerationShapeConfig;
+accessible field net/minecraft/world/gen/chunk/GenerationShapeConfig NETHER Lnet/minecraft/world/gen/chunk/GenerationShapeConfig;
+accessible class net/minecraft/registry/RegistryKey$RegistryIdPair
+accessible field net/minecraft/registry/RegistryKey INSTANCES Ljava/util/concurrent/ConcurrentMap;
 accessible method net/minecraft/world/biome/source/TheEndBiomeSource <init> (Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;Lnet/minecraft/registry/entry/RegistryEntry;)V
 accessible class net/minecraft/world/biome/source/TheEndBiomeSource
 accessible method net/minecraft/world/gen/densityfunction/DensityFunctions createEndNoiseRouter (Lnet/minecraft/registry/RegistryEntryLookup;)Lnet/minecraft/world/gen/noise/NoiseRouter;
