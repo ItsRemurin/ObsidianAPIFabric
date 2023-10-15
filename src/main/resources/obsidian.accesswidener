@@ -1,4 +1,5 @@
 accessWidener	v2	named
+accessible class net/minecraft/client/render/BackgroundRenderer$FogData
 accessible field net/minecraft/world/gen/chunk/GenerationShapeConfig SURFACE Lnet/minecraft/world/gen/chunk/GenerationShapeConfig;
 accessible field net/minecraft/world/gen/chunk/GenerationShapeConfig NETHER Lnet/minecraft/world/gen/chunk/GenerationShapeConfig;
 accessible class net/minecraft/registry/RegistryKey$RegistryIdPair
