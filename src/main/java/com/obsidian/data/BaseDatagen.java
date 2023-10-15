@@ -37,7 +37,7 @@ public abstract class BaseDatagen implements DataGeneratorEntrypoint {
             }
         }
         if(getDynamicRegistryProvider() != null) {
-            fabricDataGenerator.createPack().addProvider(
+            pack.addProvider(
                     getDynamicRegistryProvider()
             );
         }
